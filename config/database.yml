@@ -20,12 +20,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
+  host: <%= ENV.fetch("STOCK_ALERTS_HOST") { localhost } %>
+  username: <%= ENV.fetch("STOCK_ALERTS_USERNAME") { postgres } %>
+  password: <%= ENV.fetch("STOCK_ALERTS_PASSWORD") { root } %>
 
 development:
   <<: *default
   database: stock_alerts_development
-  password: <%= ENV['STOCK_ALERTS_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,5 +84,3 @@ test:
 production:
   <<: *default
   database: stock_alerts_production
-  username: stock_alerts
-  password: <%= ENV['STOCK_ALERTS_DATABASE_PASSWORD'] %>
