@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  currency_id: MyString
+  currency: MyString
   target_price: 9.99
   current_price: 9.99
   status: MyString
 
 two:
-  currency_id: MyString
+  currency: MyString
   target_price: 9.99
   current_price: 9.99
   status: MyString

@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 2024_02_22_135851) do
 
   create_table "alerts", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "currency_id", null: false
+    t.string "coin_id", null: false
     t.decimal "target_price", null: false
     t.decimal "current_price", null: false
+    t.string "currency", null: false
     t.string "status", default: "created", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

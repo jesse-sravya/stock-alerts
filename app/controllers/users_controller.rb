@@ -2,9 +2,10 @@ class UsersController < ApplicationController
     skip_before_action :authenticate_user, only: [:create]
     before_action :find_user, only: [:show, :update, :destroy]
     before_action :authenticate_admin, only: [:index, :destroy]
+    before_action :paginate, only: [:index]
 
     def index
-        @users = User.all
+        @users = User.all.order(:created_at).limit(@page_limit).offset(@page_offset)
         render json: @users, status: 200
     end
 
