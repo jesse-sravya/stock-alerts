@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
     skip_before_action :authenticate_user, only: [:create]
     before_action :find_user, only: [:show, :update, :destroy]
-    before_action :admin_only, only: [:index, :destroy]
+    before_action :authenticate_admin, only: [:index, :destroy]
 
     def index
         @users = User.all
-        render json: @user, status: 200
+        render json: @users, status: 200
     end
 
     def show
-        render json: @user, status: 200
+        render json: @user, :only => User::VIEWABLE_ATTRIBUTES, status: 200
     end
 
     def create
@@ -28,8 +28,12 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user.destroy
+        if @user.destroy
+            render json: { message: "Deleted successfully" }, status: 204
+        end
     end
+
+    # TODO: add forgot_password flow
 
     private
         def user_params
@@ -37,6 +41,9 @@ class UsersController < ApplicationController
         end
 
         def find_user
-            @user = User.find(params[:id])
+            @user = User.where(id: params[:id]).first
+            unless @user
+                render json: { error: "User Not Found" }, status: :not_found
+            end
         end
 end
