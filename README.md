@@ -19,3 +19,4 @@ $  docker-compose up --build
 - add documentation for api endpoints, move away from postman collection
 - move notifications from console log to email / sms notifications
 - use queues for processing notifications
+- [critical] add test cases to the repo
