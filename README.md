@@ -1,24 +1,21 @@
-# README
+# Stock Alerts
+Fetch currency updates using a cron and notify subscribed users.
+Download and import the postman collection to view api usage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Modules
+1. Rails app - ruby 3.0.0, rails 6.0.6.1
+2. Postgres
+3. Rake tasks with crontab (runs every 1 minute)
 
-Things you may want to cover:
+---
+## Docker setup
+```
+$  docker-compose up --build
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## To Be Done
+- optimise external API calls
+- move cron based price fetching to websocket based price fetching
+- add documentation for api endpoints, move away from postman collection
+- move notifications from console log to email / sms notifications
+- use queues for processing notifications
