@@ -1,5 +1,5 @@
 class Alert < ApplicationRecord
-    belongs_to: :user
+    belongs_to :user
     STATUS_CREATED = "created"
     STATUS_DELETED = "deleted"
     STATUS_TRIGGERED = "triggered"
